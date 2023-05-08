@@ -1,0 +1,11 @@
+.params{
+    width: auto;
+    display: flex;
+    &--icon{
+        width: 10px;
+    }
+}
+
+.rotated{
+    transform: rotate(180deg);
+}

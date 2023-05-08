@@ -4,7 +4,6 @@ function DateContainer() {
   return (
     <div>
       <DateInput />
-      <DateInput />
     </div>
   )
 }

@@ -1,4 +1,5 @@
 import { Dispatch, SetStateAction } from "react"
+import "./styles.scss"
 
 function Input(props: {
   placeholder: string
@@ -22,9 +23,9 @@ function Input(props: {
   }
 
   return (
-    <div className={"input"}>
+    <div className="input">
       <div className="input--icon">
-        <img src={props.icon} alt="" />
+        <img src={props.icon} alt="" className="input--icon" />
       </div>
       <input
         className="input"
@@ -39,7 +40,12 @@ function Input(props: {
       ></input>
       {props.inputType === "departure" && (
         <div>
-          <img src={props.departureToggle} alt="" onClick={handleClick} />
+          <img
+            src={props.departureToggle}
+            alt=""
+            onClick={handleClick}
+            className="input--swap"
+          />
         </div>
       )}
     </div>

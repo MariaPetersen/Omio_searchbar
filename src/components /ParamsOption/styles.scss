@@ -1,0 +1,11 @@
+.check {
+    visibility: hidden;
+    width: 10px;
+    &--selected{
+        visibility: visible;
+    }
+}
+
+.option {
+    display: flex;
+}

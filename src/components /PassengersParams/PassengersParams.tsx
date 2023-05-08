@@ -1,8 +1,8 @@
 import { Dispatch, SetStateAction } from "react"
 
 function PassengersParams(props: {
-  selected: []
-  setSelected: Dispatch<SetStateAction<[]>>
+  selected: string
+  setSelected: Dispatch<SetStateAction<string>>
 }) {
   return <div></div>
 }
