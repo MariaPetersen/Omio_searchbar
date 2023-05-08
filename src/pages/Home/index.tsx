@@ -1,10 +1,8 @@
-import React from 'react';
-import './App.css';
+import React from "react"
+import InputContainer from "../../components /InputContainer/InputContainer"
 
 function Home() {
-  return (
-   <div></div>
-  );
+  return <InputContainer />
 }
 
-export default Home;
+export default Home
