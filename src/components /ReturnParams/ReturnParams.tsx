@@ -3,13 +3,31 @@ import ParamsOption from "../ParamsOption/ParamsOption"
 import { MouseEvent } from "react"
 
 function ReturnParams(props: {
-  selected: string
-  setSelected: Dispatch<SetStateAction<string>>
+  selected: {
+    travelType: string
+    Adults: number
+    Youth: number
+    Senior: number
+    DiscountCard: boolean
+  }
+  setSelected: Dispatch<
+    SetStateAction<{
+      travelType: string
+      Adults: number
+      Youth: number
+      Senior: number
+      DiscountCard: boolean
+    }>
+  >
+  isRoundtrip?: boolean | undefined
+  setIsRoundtrip: Dispatch<SetStateAction<boolean>>
 }) {
   function handleClick(e: MouseEvent<HTMLElement>) {
-    const selectedOption = e.currentTarget.id
+    const selectedOption = { travelType: e.currentTarget.id }
     console.log(selectedOption)
-    props.setSelected(selectedOption)
+    props.setSelected((selected) => ({ ...selected, ...selectedOption }))
+    props.selected.travelType === "Round trip" && props.setIsRoundtrip(true)
+    console.log(props.selected)
   }
   return (
     <div>

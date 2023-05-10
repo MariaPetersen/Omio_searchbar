@@ -1,5 +1,6 @@
 import { Dispatch, SetStateAction } from "react"
 import "./styles.scss"
+import { FaDotCircle, FaMapMarkerAlt } from "react-icons/fa"
 
 function Input(props: {
   placeholder: string
@@ -25,7 +26,8 @@ function Input(props: {
   return (
     <div className="input">
       <div className="input--icon">
-        <img src={props.icon} alt="" className="input--icon" />
+        {props.inputType === "departure" && <FaDotCircle />}
+        {props.inputType === "destination" && <FaMapMarkerAlt />}
       </div>
       <input
         className="input"

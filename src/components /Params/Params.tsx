@@ -1,37 +1,47 @@
-import { useState } from "react"
-import ReturnParams from "../ReturnParams/ReturnParams"
-import PassengersParams from "../PassengersParams/PassengersParams"
 import arrow from "./../../assets/icons/downdrop-arrow.png"
 import { Dispatch, SetStateAction } from "react"
 import "./styles.scss"
 
 function Params(props: {
   paramsType: "return" | "passengers"
-  selected: string
-  setSelected: Dispatch<SetStateAction<string>>
+  name: string | []
+  selected: {
+    travelType: string
+    Adults: number
+    Youth: number
+    Senior: number
+    DiscountCard: boolean
+  }
+  setSelected: Dispatch<
+    SetStateAction<{
+      travelType: string
+      Adults: number
+      Youth: number
+      Senior: number
+      DiscountCard: boolean
+    }>
+  >
   isOpen: boolean
   setIsOpen: Dispatch<SetStateAction<boolean>>
+  passengers: string
+  isRoundtrip?: boolean | undefined
+  setIsRoundtrip?: Dispatch<SetStateAction<boolean>>
 }) {
   function handleClick() {
     props.isOpen ? props.setIsOpen(false) : props.setIsOpen(true)
   }
   return props.isOpen ? (
     <div className="params">
-      <button>
-        <span className="params--name">{props.selected}</span>
-        <img
-          src={arrow}
-          alt="open"
-          onClick={handleClick}
-          className="params--icon rotated"
-        />
+      <button onClick={handleClick}>
+        <span className="params--name">{props.name}</span>
+        <img src={arrow} alt="open" className="params--icon rotated" />
       </button>
     </div>
   ) : (
     <div className="params">
-      <button>
-        <span className="params--name">{props.selected}</span>
-        <img src={arrow} alt="open" onClick={handleClick} className="params--icon" />
+      <button onClick={handleClick}>
+        <span className="params--name">{props.name}</span>
+        <img src={arrow} alt="open" className="params--icon" />
       </button>
     </div>
   )
