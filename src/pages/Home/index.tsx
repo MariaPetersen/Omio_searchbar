@@ -1,6 +1,7 @@
 import React from "react"
 import SearchbarContainer from "../../components /SearchbarContainer/SearchbarContainer"
 import Toggle from "../../components /Toggle/Toggle"
+import "./../../utils/styles/styles.scss"
 
 function Home() {
   return (

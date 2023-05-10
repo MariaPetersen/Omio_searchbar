@@ -7,13 +7,14 @@ import "./styles.scss"
 
 function SearchbarContainer() {
   const [isRoundtrip, setIsRoundtrip] = useState(true)
-  const [selected, setSelected] = useState({
+  const [names, setNames] = useState({
     travelType: "Round trip",
-    Adults: 1,
-    Youth: 0,
-    Senior: 0,
-    DiscountCard: false,
+    adults: 1,
+    youth: 0,
+    senior: 0,
+    discountCard: false,
   })
+  const [selected, setSelected] = useState("Round trip")
   return (
     <div>
       <div className="params--all">
@@ -21,23 +22,32 @@ function SearchbarContainer() {
           paramsType="return"
           isRoundtrip={isRoundtrip}
           setIsRoundtrip={setIsRoundtrip}
+          name={names.travelType}
+          names={names}
+          setNames={setNames}
           selected={selected}
           setSelected={setSelected}
-          name={selected.travelType}
         />
         <ParamsContainer
           paramsType="passengers"
           isRoundtrip={isRoundtrip}
           setIsRoundtrip={setIsRoundtrip}
+          name="Adults"
+          names={names}
+          setNames={setNames}
           selected={selected}
           setSelected={setSelected}
-          name="Adults"
         />
       </div>
       <div>
         <InputContainer />
         <div className="date--all">
-          <DateContainer />
+          <DateContainer
+            isRoundtrip={isRoundtrip}
+            setIsRoundtrip={setIsRoundtrip}
+            selected={selected}
+            setSelected={setSelected}
+          />
         </div>
       </div>
       <SearchButton name="Search" />

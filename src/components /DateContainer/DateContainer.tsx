@@ -6,7 +6,12 @@ import addDays from "date-fns/addDays"
 import Datepicker from "react-datepicker"
 import "react-datepicker/dist/react-datepicker.css"
 
-function DateContainer(props: {}) {
+function DateContainer(props: {
+  isRoundtrip: boolean
+  setIsRoundtrip: Dispatch<SetStateAction<boolean>>
+  selected: string
+  setSelected: Dispatch<SetStateAction<string>>
+}) {
   const [dateDeparture, setDateDeparture] = useState(new Date())
   const [dateDestination, setDateDestination] = useState(addDays(new Date(), 7))
   const [isDepartureOpen, setIsDepartureOpen] = useState(false)
@@ -22,42 +27,44 @@ function DateContainer(props: {}) {
     return dateString
   }
 
-  function handleOnClick() {
-    isDepartureOpen ? setIsDepartureOpen(false) : setIsDepartureOpen(true)
-    console.log(isDepartureOpen)
+  function handleClick() {
+    props.setIsRoundtrip(true)
+    props.setSelected("Round trip")
   }
 
-  function handleChange(date: Date) {
-    setDateDeparture(date)
-    const dateDepartureString = dateToString(dateDeparture)
-    return dateDepartureString
-  }
-
-  const dateDepartureString = dateToString(dateDeparture)
-  const dateDestinationString = dateToString(dateDestination)
-
-  console.log(dateDestinationString)
   return (
     <div className="date--container">
-      <Datepicker
-        showIcon
-        onChange={handleChange}
-        selected={dateDeparture}
-        dateFormat="MM/dd"
-      />
-      <Datepicker onChange={handleChange} selected={dateDestination} />
+      <div>
+        <Datepicker
+          showIcon
+          onChange={(date: Date) => setDateDeparture(date)}
+          selected={dateDeparture}
+          dateFormat="EE, MMMM d"
+        />
+      </div>
+      {props.isRoundtrip ? (
+        <div
+          onClick={() => {
+            console.log("test")
+          }}
+        >
+          <Datepicker
+            onChange={(date: Date) => setDateDestination(date)}
+            selected={dateDestination}
+            dateFormat="EE, MMMM d"
+          />
+        </div>
+      ) : (
+        <div
+          className="datepicker--container"
+          onClick={() => {
+            handleClick()
+          }}
+        >
+          + Add return
+        </div>
+      )}
     </div>
-
-    // <div >
-    //   <div onClick={handleOnClick} className="departure">
-    //     {dateDepartureString}
-    //   </div>
-    //   <Datepicker onChange={handleChange} selected={dateDeparture} />
-    //   {isDepartureOpen && (
-    //     <Datepicker onChange={handleChange} selected={dateDeparture} />
-    //   )}
-    //   <div onClick={handleOnClick}>{dateDestinationString}</div>
-    // </div>
   )
 }
 

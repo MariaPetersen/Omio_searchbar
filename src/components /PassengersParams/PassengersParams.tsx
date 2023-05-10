@@ -1,22 +1,27 @@
 import { Dispatch, SetStateAction } from "react"
+import { FaPlusCircle, FaMinusCircle } from "react-icons/fa"
+import { MouseEventHandler } from "react"
 
 function PassengersParams(props: {
   passengerType: string
   ageRange: string
+  passengerTypeNum: number
+  onMinus: MouseEventHandler<SVGElement>
+  onPlus: MouseEventHandler<SVGElement>
   selected: {
     travelType: string
-    Adults: number
-    Youth: number
-    Senior: number
-    DiscountCard: boolean
+    adults: number
+    youth: number
+    senior: number
+    discountCard: boolean
   }
   setSelected: Dispatch<
     SetStateAction<{
       travelType: string
-      Adults: number
-      Youth: number
-      Senior: number
-      DiscountCard: boolean
+      adults: number
+      youth: number
+      senior: number
+      discountCard: boolean
     }>
   >
 }) {
@@ -26,7 +31,13 @@ function PassengersParams(props: {
         <span>{props.passengerType}</span>
         <span>{props.ageRange} years</span>
       </div>
-      <div></div>
+      <div>
+        <div>
+          <FaMinusCircle onClick={props.onMinus} />
+        </div>
+        <span>{props.passengerTypeNum}</span>
+        <FaPlusCircle onClick={props.onPlus} />
+      </div>
     </div>
   )
 }

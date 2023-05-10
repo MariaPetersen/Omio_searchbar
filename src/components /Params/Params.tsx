@@ -5,22 +5,7 @@ import "./styles.scss"
 function Params(props: {
   paramsType: "return" | "passengers"
   name: string | []
-  selected: {
-    travelType: string
-    Adults: number
-    Youth: number
-    Senior: number
-    DiscountCard: boolean
-  }
-  setSelected: Dispatch<
-    SetStateAction<{
-      travelType: string
-      Adults: number
-      Youth: number
-      Senior: number
-      DiscountCard: boolean
-    }>
-  >
+
   isOpen: boolean
   setIsOpen: Dispatch<SetStateAction<boolean>>
   passengers: string
@@ -32,14 +17,14 @@ function Params(props: {
   }
   return props.isOpen ? (
     <div className="params">
-      <button onClick={handleClick}>
+      <button onClick={handleClick} className="params--button">
         <span className="params--name">{props.name}</span>
         <img src={arrow} alt="open" className="params--icon rotated" />
       </button>
     </div>
   ) : (
     <div className="params">
-      <button onClick={handleClick}>
+      <button onClick={handleClick} className="params--button">
         <span className="params--name">{props.name}</span>
         <img src={arrow} alt="open" className="params--icon" />
       </button>

@@ -1,36 +1,25 @@
 import { Dispatch, SetStateAction } from "react"
 import ParamsOption from "../ParamsOption/ParamsOption"
 import { MouseEvent } from "react"
+import { useState } from "react"
+import "./styles.scss"
 
 function ReturnParams(props: {
-  selected: {
-    travelType: string
-    Adults: number
-    Youth: number
-    Senior: number
-    DiscountCard: boolean
-  }
-  setSelected: Dispatch<
-    SetStateAction<{
-      travelType: string
-      Adults: number
-      Youth: number
-      Senior: number
-      DiscountCard: boolean
-    }>
-  >
-  isRoundtrip?: boolean | undefined
+  isRoundtrip: boolean
   setIsRoundtrip: Dispatch<SetStateAction<boolean>>
+  selected: string
+  setSelected: Dispatch<SetStateAction<string>>
+  isOpen: boolean
+  setIsOpen: Dispatch<SetStateAction<boolean>>
 }) {
   function handleClick(e: MouseEvent<HTMLElement>) {
-    const selectedOption = { travelType: e.currentTarget.id }
-    console.log(selectedOption)
-    props.setSelected((selected) => ({ ...selected, ...selectedOption }))
-    props.selected.travelType === "Round trip" && props.setIsRoundtrip(true)
-    console.log(props.selected)
+    props.setSelected(e.currentTarget.id)
+    props.selected === "Round trip" && props.setIsRoundtrip(false)
+    props.selected === "One-way" && props.setIsRoundtrip(true)
+    props.setIsOpen(false)
   }
   return (
-    <div>
+    <div className="returnParams">
       <ParamsOption name="One-way" onClick={handleClick} selected={props.selected} />
       <ParamsOption
         name="Round trip"
