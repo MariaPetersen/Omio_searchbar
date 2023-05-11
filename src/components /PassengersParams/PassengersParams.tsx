@@ -8,22 +8,6 @@ function PassengersParams(props: {
   passengerTypeNum: number
   onMinus: MouseEventHandler<SVGElement>
   onPlus: MouseEventHandler<SVGElement>
-  selected: {
-    travelType: string
-    adults: number
-    youth: number
-    senior: number
-    discountCard: boolean
-  }
-  setSelected: Dispatch<
-    SetStateAction<{
-      travelType: string
-      adults: number
-      youth: number
-      senior: number
-      discountCard: boolean
-    }>
-  >
 }) {
   return (
     <div>

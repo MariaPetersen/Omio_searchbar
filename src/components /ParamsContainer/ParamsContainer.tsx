@@ -13,22 +13,14 @@ function ParamsContainer(props: {
   selected: string
   setSelected: Dispatch<SetStateAction<string>>
   name: string | []
-  names: {
-    travelType: string
-    adults: number
-    youth: number
-    senior: number
-    discountCard: boolean
-  }
-  setNames: Dispatch<
-    SetStateAction<{
-      travelType: string
-      adults: number
-      youth: number
-      senior: number
-      discountCard: boolean
-    }>
-  >
+  adults: number
+  setAdults: Dispatch<SetStateAction<number>>
+  youth: number
+  setYouth: Dispatch<SetStateAction<number>>
+  senior: number
+  setSenior: Dispatch<SetStateAction<number>>
+  hasDiscountcard: boolean
+  setHasDiscountcart: Dispatch<SetStateAction<boolean>>
 }) {
   const [isOpen, setIsOpen] = useState(false)
   return (
@@ -53,7 +45,16 @@ function ParamsContainer(props: {
         />
       )}
       {isOpen && props.paramsType === "passengers" && (
-        <PassengersParamsContainer names={props.names} setNames={props.setNames} />
+        <PassengersParamsContainer
+          adults={props.adults}
+          setAdults={props.setAdults}
+          youth={props.youth}
+          setYouth={props.setYouth}
+          senior={props.senior}
+          setSenior={props.setSenior}
+          hasDiscountcard={props.hasDiscountcard}
+          setHasDiscountcart={props.setHasDiscountcart}
+        />
       )}
     </div>
   )

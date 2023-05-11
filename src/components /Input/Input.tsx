@@ -1,28 +1,47 @@
-import { Dispatch, SetStateAction } from "react"
+import { Dispatch, MouseEventHandler, SetStateAction } from "react"
 import "./styles.scss"
 import { FaDotCircle, FaMapMarkerAlt } from "react-icons/fa"
+import { useState } from "react"
+import { IData } from "components /InputContainer/InputContainer"
 
 function Input(props: {
   placeholder: string
   icon: string
   departureToggle: string
   inputType: string
-  valueDeparture: string
-  setDeparture: Dispatch<SetStateAction<string>>
-  valueDestination: string
-  setDestination: Dispatch<SetStateAction<string>>
+  valueCity: string
+  setCity: Dispatch<SetStateAction<string>>
+  onSwap: MouseEventHandler<HTMLElement>
+  showSuggestions: boolean
+  setShowSuggestions: Dispatch<SetStateAction<boolean>>
+
+  setSuggestions: Dispatch<SetStateAction<IData[]>>
 }) {
+  const [searchParams, setSearchParams] = useState("")
+
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
-    props.inputType === "departure" && props.setDeparture(e.target.value)
-    props.inputType === "destination" && props.setDestination(e.target.value)
+    props.setCity(e.target.value)
+    setSearchParams(e.target.value)
+    let url = `https://api.comparatrip.eu/cities/autocomplete/?q=${searchParams}`
+    async function fetchData() {
+      const response = await fetch(url)
+      const data = await response.json()
+      console.log(data)
+      props.setSuggestions(data)
+    }
+    fetchData()
   }
 
-  function handleClick() {
-    let temp = props.valueDestination
-    props.setDestination(props.valueDeparture)
-    props.setDeparture(temp)
+  function handleInputClick() {
+    async function fetchData() {
+      const response = await fetch("https://api.comparatrip.eu/cities/popular/5")
+      const data = await response.json()
+      console.log(data)
+      props.setSuggestions(data)
+      props.setShowSuggestions(true)
+    }
+    fetchData()
   }
-
   return (
     <div className="input">
       <div className="input--icon">
@@ -33,19 +52,16 @@ function Input(props: {
         className="input"
         type="text"
         placeholder={props.placeholder}
-        value={
-          props.inputType === "departure"
-            ? props.valueDeparture
-            : props.valueDestination
-        }
+        value={props.valueCity}
         onChange={handleChange}
+        onClick={handleInputClick}
       ></input>
       {props.inputType === "departure" && (
         <div>
           <img
             src={props.departureToggle}
             alt=""
-            onClick={handleClick}
+            onClick={props.onSwap}
             className="input--swap"
           />
         </div>

@@ -5,87 +5,60 @@ import { useState, useRef } from "react"
 import "./styles.scss"
 
 function PassengersParamsContainer(props: {
-  names: {
-    travelType: string
-    adults: number
-    youth: number
-    senior: number
-    discountCard: boolean
-  }
-  setNames: Dispatch<
-    SetStateAction<{
-      travelType: string
-      adults: number
-      youth: number
-      senior: number
-      discountCard: boolean
-    }>
-  >
+  adults: number
+  setAdults: Dispatch<SetStateAction<number>>
+  youth: number
+  setYouth: Dispatch<SetStateAction<number>>
+  senior: number
+  setSenior: Dispatch<SetStateAction<number>>
+  hasDiscountcard: boolean
+  setHasDiscountcart: Dispatch<SetStateAction<boolean>>
 }) {
-  const [selected, setSelected] = useState({
-    travelType: "Round trip",
-    adults: 1,
-    youth: 0,
-    senior: 0,
-    discountCard: false,
-  })
-
   return (
     <div className="passengersParams--container">
       <PassengersParams
-        passengerTypeNum={selected.adults}
-        selected={selected}
-        setSelected={setSelected}
+        passengerTypeNum={props.adults}
         passengerType="Adult"
         ageRange="26+"
         onMinus={() => {
-          if (selected.adults >= 1) {
-            setSelected({ ...selected, adults: selected.adults - 1 })
+          if (props.adults >= 1) {
+            const newAdults = props.adults - 1
+            props.setAdults(newAdults)
           }
-          props.setNames({ ...props.names, ...selected })
-          console.log(props.names)
         }}
         onPlus={() => {
-          setSelected({ ...selected, adults: selected.adults + 1 })
-          props.setNames({ ...props.names, ...selected })
-          console.log(props.names)
+          const newAdults = props.adults + 1
+          props.setAdults(newAdults)
         }}
       />
       <PassengersParams
-        passengerTypeNum={selected.youth}
-        selected={selected}
-        setSelected={setSelected}
+        passengerTypeNum={props.youth}
         passengerType="Youth"
         ageRange="0-25"
         onMinus={() => {
-          if (selected.adults >= 1) {
-            setSelected({ ...selected, youth: selected.youth - 1 })
+          if (props.youth >= 1) {
+            const newYouth = props.youth - 1
+            props.setYouth(newYouth)
           }
-          props.setNames({ ...props.names, ...selected })
-          console.log(props.names)
         }}
         onPlus={() => {
-          setSelected({ ...selected, youth: selected.youth + 1 })
-          props.setNames({ ...props.names, ...selected })
-          console.log(props.names)
+          const newYouth = props.youth + 1
+          props.setYouth(newYouth)
         }}
       />
       <PassengersParams
-        passengerTypeNum={selected.senior}
-        selected={selected}
-        setSelected={setSelected}
+        passengerTypeNum={props.senior}
         passengerType="Senior"
         ageRange="58+"
         onMinus={() => {
-          if (selected.adults >= 1) {
-            setSelected({ ...selected, senior: selected.senior - 1 })
+          if (props.senior >= 1) {
+            const newSenior = props.senior - 1
+            props.setSenior(newSenior)
           }
-          props.setNames({ ...props.names, ...selected })
-          console.log(props.names)
         }}
         onPlus={() => {
-          setSelected({ ...selected, senior: selected.senior + 1 })
-          props.setNames({ ...props.names, ...selected })
+          const newSenior = props.senior + 1
+          props.setSenior(newSenior)
         }}
       />
       <div>

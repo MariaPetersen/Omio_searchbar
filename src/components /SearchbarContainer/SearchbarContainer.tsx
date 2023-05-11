@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import DateContainer from "../DateContainer/DateContainer"
 import InputContainer from "../InputContainer/InputContainer"
 import SearchButton from "../SearchButton/SearchButton"
@@ -7,24 +7,51 @@ import "./styles.scss"
 
 function SearchbarContainer() {
   const [isRoundtrip, setIsRoundtrip] = useState(true)
-  const [names, setNames] = useState({
-    travelType: "Round trip",
-    adults: 1,
-    youth: 0,
-    senior: 0,
-    discountCard: false,
-  })
+  const [adults, setAdults] = useState(1)
+  const [youth, setYouth] = useState(0)
+  const [senior, setSenior] = useState(0)
+  const [hasDiscountcard, setHasDiscountcart] = useState(false)
   const [selected, setSelected] = useState("Round trip")
+  const [title, setTitle] = useState("")
+
+  useEffect(() => {
+    if (senior === 0 && youth === 0) {
+      if (hasDiscountcard) {
+        let number = adults.toString()
+        setTitle("Adults" + " " + number + ", " + "Discount card")
+      } else {
+        let number = adults.toString()
+        setTitle("Adults" + " " + number + ", " + "No discount card")
+      }
+    } else {
+      if (hasDiscountcard) {
+        let number = adults + youth + senior
+        let numberString = number.toString()
+        setTitle("Passengers" + " " + numberString + ", " + "Discount card")
+      } else {
+        let number = adults + youth + senior
+        let numberString = number.toString()
+        setTitle("Passengers" + " " + numberString + ", " + "No discount card")
+      }
+    }
+  }, [adults, youth, senior])
+
   return (
-    <div>
+    <div className="searchbar">
       <div className="params--all">
         <ParamsContainer
           paramsType="return"
           isRoundtrip={isRoundtrip}
           setIsRoundtrip={setIsRoundtrip}
-          name={names.travelType}
-          names={names}
-          setNames={setNames}
+          name={selected}
+          adults={adults}
+          setAdults={setAdults}
+          youth={youth}
+          setYouth={setYouth}
+          senior={senior}
+          setSenior={setSenior}
+          hasDiscountcard={hasDiscountcard}
+          setHasDiscountcart={setHasDiscountcart}
           selected={selected}
           setSelected={setSelected}
         />
@@ -32,9 +59,15 @@ function SearchbarContainer() {
           paramsType="passengers"
           isRoundtrip={isRoundtrip}
           setIsRoundtrip={setIsRoundtrip}
-          name="Adults"
-          names={names}
-          setNames={setNames}
+          name={title}
+          adults={adults}
+          setAdults={setAdults}
+          youth={youth}
+          setYouth={setYouth}
+          senior={senior}
+          setSenior={setSenior}
+          hasDiscountcard={hasDiscountcard}
+          setHasDiscountcart={setHasDiscountcart}
           selected={selected}
           setSelected={setSelected}
         />

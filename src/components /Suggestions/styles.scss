@@ -1,0 +1,14 @@
+.blocker{
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        content: ' ';
+}
+
+.suggestions {
+    background-color: white;
+    position: absolute;
+    z-index: 10;
+}
