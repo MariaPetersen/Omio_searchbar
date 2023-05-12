@@ -1,6 +1,7 @@
 .params--all{
     display: flex;
     flex-direction: row;
+    -webkit-text-size-adjust: 100%;
 }
 
 .date--all{
@@ -9,7 +10,7 @@
 
 .searchbar{
     background-color: #fff;
-border-radius: 8px;
-padding: 16px;
-max-width: 1136px;
+    border-radius: 8px;
+    padding: 16px;
+    max-width: 1136px;
 }

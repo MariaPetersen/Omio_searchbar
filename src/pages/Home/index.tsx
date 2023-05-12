@@ -8,7 +8,8 @@ function Home() {
     <div className="container">
       <SearchbarContainer />
       <div className="container--accomodation">
-        <Toggle name="Find my accomodation" />
+        <Toggle className="slider slider--blue round" />
+        <div>Enable batmobile transport mode</div>
       </div>
     </div>
   )

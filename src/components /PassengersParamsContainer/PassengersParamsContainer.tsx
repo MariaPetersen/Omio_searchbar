@@ -1,5 +1,8 @@
 import PassengersParams from "../PassengersParams/PassengersParams"
 import { Dispatch, SetStateAction, useEffect } from "react"
+import Toggle from "./../Toggle/Toggle"
+import { FaCreditCard } from "react-icons/fa"
+import { AiOutlineInfoCircle } from "react-icons/ai"
 import { MouseEventHandler } from "react"
 import { useState, useRef } from "react"
 import "./styles.scss"
@@ -63,11 +66,11 @@ function PassengersParamsContainer(props: {
       />
       <div>
         <div>
-          <img />
+          <FaCreditCard />
           <span>Add discount card</span>
-          <img />
+          <AiOutlineInfoCircle />
         </div>
-        <img />
+        <Toggle className="slider slider--blue round" />
       </div>
     </div>
   )

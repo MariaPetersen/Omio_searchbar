@@ -1,10 +1,13 @@
+@import "./../../utils/styles/styles.scss";
+
 .params{
     width: auto;
     display: flex;
+    font-size: 14px;
+    color: $text-color;
     &--icon{
         width: 10px;
-        margin-left: 8px;
-        margin-right: 8px;
+        margin-left: 6px;
     };
     cursor: pointer;
     &--button{

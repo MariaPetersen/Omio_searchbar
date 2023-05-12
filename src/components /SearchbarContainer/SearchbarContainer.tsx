@@ -17,21 +17,41 @@ function SearchbarContainer() {
   useEffect(() => {
     if (senior === 0 && youth === 0) {
       if (hasDiscountcard) {
-        let number = adults.toString()
-        setTitle("Adults" + " " + number + ", " + "Discount card")
+        if (adults > 1) {
+          let number = adults.toString()
+          setTitle(number + " " + "Adults" + ", " + "Discount card")
+        } else {
+          let number = adults.toString()
+          setTitle(number + " " + "Adult" + ", " + "Discount card")
+        }
       } else {
-        let number = adults.toString()
-        setTitle("Adults" + " " + number + ", " + "No discount card")
+        if (adults > 1) {
+          let number = adults.toString()
+          setTitle(number + " " + "Adults" + ", " + "No discount card")
+        } else {
+          let number = adults.toString()
+          setTitle(number + " " + "Adult" + ", " + "No discount card")
+        }
       }
     } else {
       if (hasDiscountcard) {
         let number = adults + youth + senior
-        let numberString = number.toString()
-        setTitle("Passengers" + " " + numberString + ", " + "Discount card")
+        if (number > 1) {
+          let numberString = number.toString()
+          setTitle(numberString + " " + "Passengers" + ", " + "Discount card")
+        } else {
+          let numberString = number.toString()
+          setTitle(numberString + " " + "Passenger" + ", " + "Discount card")
+        }
       } else {
         let number = adults + youth + senior
-        let numberString = number.toString()
-        setTitle("Passengers" + " " + numberString + ", " + "No discount card")
+        if (number > 1) {
+          let numberString = number.toString()
+          setTitle(numberString + " " + "Passengers" + ", " + "No discount card")
+        } else {
+          let numberString = number.toString()
+          setTitle(numberString + " " + "Passenger" + ", " + "No discount card")
+        }
       }
     }
   }, [adults, youth, senior])

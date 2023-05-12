@@ -31,6 +31,48 @@ function InputContainer() {
     setDeparture(temp)
   }
 
+  function getPopularSugestions() {
+    async function fetchData() {
+      try {
+        const response = await fetch("https://api.comparatrip.eu/cities/popular/5")
+        const data = await response.json()
+        console.log(data)
+        setSuggestions(data)
+        setShowDepSuggestions(true)
+      } catch {
+        return
+      }
+    }
+    fetchData()
+  }
+  function getDestinationSuggestions() {
+    async function fetchData() {
+      try {
+        if (valueDeparture) {
+          const response = await fetch(
+            `https://api.comparatrip.eu/cities/popular/from/${valueDeparture}/5`
+          )
+          const data = await response.json()
+          console.log(data)
+          setSuggestions(data)
+        } else {
+          const response = await fetch("https://api.comparatrip.eu/cities/popular/5")
+          const data = await response.json()
+          console.log(data)
+          setSuggestions(data)
+        }
+      } catch {
+        const response = await fetch("https://api.comparatrip.eu/cities/popular/5")
+        const data = await response.json()
+        console.log(data)
+        setSuggestions(data)
+      } finally {
+        setShowDestSuggestions(true)
+      }
+    }
+    fetchData()
+  }
+
   return (
     <div>
       <div>
@@ -45,6 +87,7 @@ function InputContainer() {
           showSuggestions={showDepSuggestions}
           setShowSuggestions={setShowDepSuggestions}
           setSuggestions={setSuggestions}
+          onClick={getPopularSugestions}
         />
         {showDepSuggestions && (
           <Suggestions
@@ -67,6 +110,7 @@ function InputContainer() {
           showSuggestions={showDestSuggestions}
           setShowSuggestions={setShowDestSuggestions}
           setSuggestions={setSuggestions}
+          onClick={getDestinationSuggestions}
         />
         {showDestSuggestions && (
           <Suggestions

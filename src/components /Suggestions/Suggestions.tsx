@@ -16,6 +16,7 @@ function Suggestions(props: {
             key={city.id}
             onClick={() => {
               props.setCity(city.local_name)
+              props.setShowSuggestions(false)
             }}
           >
             {city.local_name}

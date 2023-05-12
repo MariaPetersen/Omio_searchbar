@@ -1,8 +1,12 @@
-function Toggle(props: { name: string }) {
+import "./styles.scss"
+
+function Toggle(props: { className: string }) {
   return (
     <div>
-      <img src="" alt="" />
-      <span>{props.name}</span>
+      <label className="switch">
+        <input type="checkbox" />
+        <span className={props.className}></span>
+      </label>
     </div>
   )
 }
