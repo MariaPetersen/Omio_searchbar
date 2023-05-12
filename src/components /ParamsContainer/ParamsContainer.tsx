@@ -23,6 +23,7 @@ function ParamsContainer(props: {
   setHasDiscountcart: Dispatch<SetStateAction<boolean>>
 }) {
   const [isOpen, setIsOpen] = useState(false)
+
   return (
     <div className="params--container">
       <Params
@@ -56,6 +57,7 @@ function ParamsContainer(props: {
           setHasDiscountcart={props.setHasDiscountcart}
         />
       )}
+      <div className="blocker" onClick={() => setIsOpen(false)}></div>
     </div>
   )
 }

@@ -19,13 +19,20 @@ function ReturnParams(props: {
     props.setIsOpen(false)
   }
   return (
-    <div className="returnParams">
-      <ParamsOption name="One-way" onClick={handleClick} selected={props.selected} />
-      <ParamsOption
-        name="Round trip"
-        onClick={handleClick}
-        selected={props.selected}
-      />
+    <div>
+      <div className="returnParams">
+        <ParamsOption
+          name="One-way"
+          onClick={handleClick}
+          selected={props.selected}
+        />
+        <ParamsOption
+          name="Round trip"
+          onClick={handleClick}
+          selected={props.selected}
+        />
+      </div>
+      <div className="blocker" onClick={() => props.setIsOpen(false)}></div>
     </div>
   )
 }

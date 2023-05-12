@@ -1,10 +1,18 @@
-import DateInput from "../DateInput/DateInput"
-import { Dispatch, SetStateAction } from "react"
+import {
+  Dispatch,
+  MouseEventHandler,
+  SetStateAction,
+  createElement,
+  forwardRef,
+} from "react"
 import { useState, useEffect } from "react"
 import "./styles.scss"
 import addDays from "date-fns/addDays"
 import Datepicker from "react-datepicker"
 import "react-datepicker/dist/react-datepicker.css"
+import DestinationInput from "../DestinationInput/DestinationInput"
+import DepartureInput from "./../DepartureInput/DepartureInput"
+import { Value } from "sass"
 
 function DateContainer(props: {
   isRoundtrip: boolean
@@ -14,20 +22,8 @@ function DateContainer(props: {
 }) {
   const [dateDeparture, setDateDeparture] = useState(new Date())
   const [dateDestination, setDateDestination] = useState(addDays(new Date(), 7))
-  const [isDepartureOpen, setIsDepartureOpen] = useState(false)
-  const [selectedInput, setSelectedInput] = useState("")
 
-  function dateToString(date: Date) {
-    const dateString = date.toLocaleDateString("en-US", {
-      weekday: "short",
-      month: "short",
-      day: "numeric",
-    })
-
-    return dateString
-  }
-
-  function handleClick() {
+  function addRoundtrip() {
     props.setIsRoundtrip(true)
     props.setSelected("Round trip")
   }
@@ -36,32 +32,41 @@ function DateContainer(props: {
     <div className="date--container">
       <div>
         <Datepicker
-          showIcon
           onChange={(date: Date) => setDateDeparture(date)}
           selected={dateDeparture}
           dateFormat="EE, MMMM d"
+          startDate={dateDeparture}
+          endDate={dateDestination}
+          customInput={createElement(forwardRef(DepartureInput))}
         />
       </div>
       {props.isRoundtrip ? (
-        <div
-          onClick={() => {
-            console.log("test")
-          }}
-        >
+        <div>
           <Datepicker
             onChange={(date: Date) => setDateDestination(date)}
             selected={dateDestination}
+            startDate={dateDeparture}
+            endDate={dateDestination}
             dateFormat="EE, MMMM d"
+            customInput={createElement(forwardRef(DestinationInput))}
           />
         </div>
       ) : (
         <div
           className="datepicker--container"
           onClick={() => {
-            handleClick()
+            addRoundtrip()
           }}
         >
-          + Add return
+          <Datepicker
+            onChange={(date: Date) => setDateDestination(date)}
+            startDate={dateDeparture}
+            endDate={dateDestination}
+            dateFormat="EE, MMMM d"
+            disabled
+            placeholderText="+ Add return"
+            customInput={createElement(forwardRef(DestinationInput))}
+          />
         </div>
       )}
     </div>

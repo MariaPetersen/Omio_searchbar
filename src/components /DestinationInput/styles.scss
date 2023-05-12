@@ -1,0 +1,7 @@
+@import "./../../utils/styles/styles.scss";
+
+.datepicker__input--destination {
+    border-top-right-radius: $border-radius;
+    border-bottom-right-radius: $border-radius;
+    padding-left: 20px;
+}

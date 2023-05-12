@@ -1,18 +1,23 @@
 @import "./variables";
+@import "./mixins";
+@import "./normalize";
 @import url('https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap');
+
 
 html{
     background-color: $background-color;
+    box-sizing: content-box;
 }
 body{
     font-family: 'Arimo',Arial,sans-serif;
+    padding: 15px;
+    box-sizing: border-box;
 }
 
 .container{
     height: 314px;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
     width: 100%;
     margin: 0 auto;
     padding: 16px;

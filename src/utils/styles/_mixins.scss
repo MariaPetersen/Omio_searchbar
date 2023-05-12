@@ -1,0 +1,13 @@
+@mixin center-div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+@mixin input {
+    height: 48px;
+    font-weight: 400;
+    background-color: $background-color;
+    margin: 4px 0px;
+    border: 1px solid $background-color;
+}

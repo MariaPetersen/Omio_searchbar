@@ -1,0 +1,36 @@
+@import "./../../utils/styles/styles.scss";
+
+.datepicker__input{
+    @include input;
+    height: 48px;
+    padding-left: 40px;
+    color: $text-color;
+    width: 100%;
+   
+    
+    &:focus{
+        &-visible{
+            outline: none;
+        }
+        border: 1px solid $second-icon-color;
+        outline: none;
+    }
+    &:hover{
+        border: 1px solid $second-icon-color;
+    
+    }
+    
+    
+    &--icon{
+        position: absolute;
+        top: 20px;
+        left: 14px;
+        color: $second-icon-color;
+        scale: 1.5;
+    }
+    &--departure{
+    border-top-left-radius: $border-radius;
+    border-bottom-left-radius: $border-radius;
+    }
+}
+

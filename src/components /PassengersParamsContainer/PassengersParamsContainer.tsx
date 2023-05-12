@@ -64,11 +64,11 @@ function PassengersParamsContainer(props: {
           props.setSenior(newSenior)
         }}
       />
-      <div>
-        <div>
-          <FaCreditCard />
+      <div className="discount">
+        <div className="discount--text">
+          <FaCreditCard className="discount--cardIcon" />
           <span>Add discount card</span>
-          <AiOutlineInfoCircle />
+          <AiOutlineInfoCircle className="discount--infoIcon" />
         </div>
         <Toggle className="slider slider--blue round" />
       </div>

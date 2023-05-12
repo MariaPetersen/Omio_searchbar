@@ -1,6 +1,7 @@
 import { Dispatch, MouseEventHandler, SetStateAction } from "react"
 import "./styles.scss"
 import { FaDotCircle, FaMapMarkerAlt } from "react-icons/fa"
+import { TbArrowsSort } from "react-icons/tb"
 import { useState } from "react"
 import { IData } from "components /InputContainer/InputContainer"
 
@@ -11,7 +12,7 @@ function Input(props: {
   inputType: string
   valueCity: string
   setCity: Dispatch<SetStateAction<string>>
-  onSwap: MouseEventHandler<HTMLElement>
+  onSwap: MouseEventHandler<SVGElement>
   showSuggestions: boolean
   setShowSuggestions: Dispatch<SetStateAction<boolean>>
   onClick: MouseEventHandler<HTMLElement>
@@ -30,7 +31,7 @@ function Input(props: {
   }
 
   return (
-    <div className="input">
+    <div className="input__container">
       <div className="input--icon">
         {props.inputType === "departure" && <FaDotCircle />}
         {props.inputType === "destination" && <FaMapMarkerAlt />}
@@ -45,12 +46,7 @@ function Input(props: {
       ></input>
       {props.inputType === "departure" && (
         <div>
-          <img
-            src={props.departureToggle}
-            alt=""
-            onClick={props.onSwap}
-            className="input--swap"
-          />
+          <TbArrowsSort className="input--swap" onClick={props.onSwap} />
         </div>
       )}
     </div>
