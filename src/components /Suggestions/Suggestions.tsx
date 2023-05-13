@@ -1,5 +1,6 @@
 import { IData } from "./../InputContainer/InputContainer"
 import { Dispatch, SetStateAction } from "react"
+import { FaMapMarkerAlt } from "react-icons/fa"
 import "./styles.scss"
 
 function Suggestions(props: {
@@ -9,7 +10,7 @@ function Suggestions(props: {
   setCity: Dispatch<SetStateAction<string>>
 }) {
   return (
-    <div>
+    <div className="suggestions--container">
       <ul className="suggestions">
         {props.suggestions.map((city, index) => (
           <li
@@ -18,7 +19,9 @@ function Suggestions(props: {
               props.setCity(city.local_name)
               props.setShowSuggestions(false)
             }}
+            className="suggestions--option"
           >
+            <FaMapMarkerAlt className="suggestions--icon" />
             {city.local_name}
           </li>
         ))}

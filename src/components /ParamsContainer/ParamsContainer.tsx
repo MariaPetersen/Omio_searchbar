@@ -36,28 +36,33 @@ function ParamsContainer(props: {
         setIsRoundtrip={props.setIsRoundtrip}
       />
       {isOpen && props.paramsType === "return" && (
-        <ReturnParams
-          isRoundtrip={props.isRoundtrip}
-          setIsRoundtrip={props.setIsRoundtrip}
-          selected={props.selected}
-          setSelected={props.setSelected}
-          isOpen={isOpen}
-          setIsOpen={setIsOpen}
-        />
+        <div>
+          <ReturnParams
+            isRoundtrip={props.isRoundtrip}
+            setIsRoundtrip={props.setIsRoundtrip}
+            selected={props.selected}
+            setSelected={props.setSelected}
+            isOpen={isOpen}
+            setIsOpen={setIsOpen}
+          />
+          <div className="blocker" onClick={() => setIsOpen(false)}></div>
+        </div>
       )}
       {isOpen && props.paramsType === "passengers" && (
-        <PassengersParamsContainer
-          adults={props.adults}
-          setAdults={props.setAdults}
-          youth={props.youth}
-          setYouth={props.setYouth}
-          senior={props.senior}
-          setSenior={props.setSenior}
-          hasDiscountcard={props.hasDiscountcard}
-          setHasDiscountcart={props.setHasDiscountcart}
-        />
+        <div>
+          <PassengersParamsContainer
+            adults={props.adults}
+            setAdults={props.setAdults}
+            youth={props.youth}
+            setYouth={props.setYouth}
+            senior={props.senior}
+            setSenior={props.setSenior}
+            hasDiscountcard={props.hasDiscountcard}
+            setHasDiscountcart={props.setHasDiscountcart}
+          />
+          <div className="blocker" onClick={() => setIsOpen(false)}></div>
+        </div>
       )}
-      <div className="blocker" onClick={() => setIsOpen(false)}></div>
     </div>
   )
 }

@@ -29,35 +29,27 @@ function DateContainer(props: {
   }
 
   return (
-    <div className="date--container">
-      <div>
+    <div className="date--all">
+      <Datepicker
+        onChange={(date: Date) => setDateDeparture(date)}
+        selected={dateDeparture}
+        dateFormat="EE, MMMM d"
+        startDate={dateDeparture}
+        endDate={dateDestination}
+        customInput={createElement(forwardRef(DepartureInput))}
+      />
+
+      {props.isRoundtrip ? (
         <Datepicker
-          onChange={(date: Date) => setDateDeparture(date)}
-          selected={dateDeparture}
-          dateFormat="EE, MMMM d"
+          onChange={(date: Date) => setDateDestination(date)}
+          selected={dateDestination}
           startDate={dateDeparture}
           endDate={dateDestination}
-          customInput={createElement(forwardRef(DepartureInput))}
+          dateFormat="EE, MMMM d"
+          customInput={createElement(forwardRef(DestinationInput))}
         />
-      </div>
-      {props.isRoundtrip ? (
-        <div>
-          <Datepicker
-            onChange={(date: Date) => setDateDestination(date)}
-            selected={dateDestination}
-            startDate={dateDeparture}
-            endDate={dateDestination}
-            dateFormat="EE, MMMM d"
-            customInput={createElement(forwardRef(DestinationInput))}
-          />
-        </div>
       ) : (
-        <div
-          className="datepicker--container"
-          onClick={() => {
-            addRoundtrip()
-          }}
-        >
+        <div className="datepicker--container" onClick={addRoundtrip}>
           <Datepicker
             onChange={(date: Date) => setDateDestination(date)}
             startDate={dateDeparture}

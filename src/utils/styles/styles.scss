@@ -15,7 +15,7 @@ body{
 }
 
 .container{
-    height: 314px;
+    height: auto;
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -27,4 +27,16 @@ body{
     background-color: #fff;
     box-shadow: 0, 4px, 8px, rgba(19,41,104,.1);;
     justify-content: space-between;
+    &--accomodation{
+        display: flex;
+        padding-left: 16px;
+    }
 }
+
+.accomodation {
+    margin-left: 8px;
+    font-weight: 300;
+    font-size: 14px;
+    color: $text-color;
+}
+

@@ -1,9 +1,22 @@
-.date--container{
+.date--all{
     display: flex;
     width: 100%;
     justify-content: center;
+    position: relative;
+    &::before{
+        position: absolute;
+        display: block;
+        left: 50%;
+        top: 50%;
+        margin-top: -12px;
+        content: "";
+        height: 24px;
+        width: 1px;
+        background-color: #ccc;
+        z-index: 5;
+    }
 }
 
 .datepicker--container{
-    width: fit-content;
+    width: 100%;
 }

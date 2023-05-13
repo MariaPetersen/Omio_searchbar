@@ -94,14 +94,13 @@ function SearchbarContainer() {
       </div>
       <div>
         <InputContainer />
-        <div className="date--all">
-          <DateContainer
-            isRoundtrip={isRoundtrip}
-            setIsRoundtrip={setIsRoundtrip}
-            selected={selected}
-            setSelected={setSelected}
-          />
-        </div>
+
+        <DateContainer
+          isRoundtrip={isRoundtrip}
+          setIsRoundtrip={setIsRoundtrip}
+          selected={selected}
+          setSelected={setSelected}
+        />
       </div>
       <SearchButton name="Search" />
     </div>

@@ -3,7 +3,7 @@ import { Dispatch, SetStateAction } from "react"
 import { AiTwotoneCalendar } from "react-icons/ai"
 import "./styles.scss"
 
-const DestinationInput = (
+const DepartureInput = (
   props: React.HTMLProps<HTMLInputElement>,
   ref: React.Ref<HTMLInputElement>
 ) => {
@@ -15,4 +15,4 @@ const DestinationInput = (
   )
 }
 
-export default DestinationInput
+export default DepartureInput

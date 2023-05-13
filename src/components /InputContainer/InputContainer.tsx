@@ -90,12 +90,18 @@ function InputContainer() {
           onClick={getPopularSugestions}
         />
         {showDepSuggestions && (
-          <Suggestions
-            setCity={setDeparture}
-            suggestions={suggestions}
-            showSuggestions={showDepSuggestions}
-            setShowSuggestions={setShowDepSuggestions}
-          />
+          <div>
+            <Suggestions
+              setCity={setDeparture}
+              suggestions={suggestions}
+              showSuggestions={showDepSuggestions}
+              setShowSuggestions={setShowDepSuggestions}
+            />
+            <div
+              className="blocker"
+              onClick={() => setShowDepSuggestions(false)}
+            ></div>
+          </div>
         )}
       </div>
       <div>
@@ -113,12 +119,18 @@ function InputContainer() {
           onClick={getDestinationSuggestions}
         />
         {showDestSuggestions && (
-          <Suggestions
-            setCity={setDestination}
-            suggestions={suggestions}
-            showSuggestions={showDestSuggestions}
-            setShowSuggestions={setShowDestSuggestions}
-          />
+          <div>
+            <Suggestions
+              setCity={setDestination}
+              suggestions={suggestions}
+              showSuggestions={showDestSuggestions}
+              setShowSuggestions={setShowDestSuggestions}
+            />
+            <div
+              className="blocker"
+              onClick={() => setShowDestSuggestions(false)}
+            ></div>
+          </div>
         )}
       </div>
     </div>

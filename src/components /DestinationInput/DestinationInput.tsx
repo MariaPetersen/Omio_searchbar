@@ -1,6 +1,6 @@
 import "./styles.scss"
 
-const DepartureInput = (
+const DestinationInput = (
   props: React.HTMLProps<HTMLInputElement>,
   ref: React.Ref<HTMLInputElement>
 ) => {
@@ -14,4 +14,4 @@ const DepartureInput = (
   )
 }
 
-export default DepartureInput
+export default DestinationInput
