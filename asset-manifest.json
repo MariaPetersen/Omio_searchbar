@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/omio_searchbar/static/css/main.166c825b.css",
+    "main.js": "/omio_searchbar/static/js/main.c277ca90.js",
+    "static/js/787.e3625ed5.chunk.js": "/omio_searchbar/static/js/787.e3625ed5.chunk.js",
+    "index.html": "/omio_searchbar/index.html",
+    "main.166c825b.css.map": "/omio_searchbar/static/css/main.166c825b.css.map",
+    "main.c277ca90.js.map": "/omio_searchbar/static/js/main.c277ca90.js.map",
+    "787.e3625ed5.chunk.js.map": "/omio_searchbar/static/js/787.e3625ed5.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.166c825b.css",
+    "static/js/main.c277ca90.js"
+  ]
+}
