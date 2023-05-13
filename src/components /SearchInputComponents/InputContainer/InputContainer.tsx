@@ -24,18 +24,19 @@ function InputContainer() {
   const [showDepSuggestions, setShowDepSuggestions] = useState(false)
   const [showDestSuggestions, setShowDestSuggestions] = useState(false)
 
+  //Swap departure and destination
   function handleSwap() {
     let temp = valueDestination
     setDestination(valueDeparture)
     setDeparture(temp)
   }
 
-  function getPopularSugestions() {
+  //Get 5 suggestion for 5 most popular cities
+  function getPopularSuggestions() {
     async function fetchData() {
       try {
         const response = await fetch("https://api.comparatrip.eu/cities/popular/5")
         const data = await response.json()
-        console.log(data)
         setSuggestions(data)
         setShowDepSuggestions(true)
         setShowDestSuggestions(!setShowDestSuggestions)
@@ -45,6 +46,8 @@ function InputContainer() {
     }
     fetchData()
   }
+
+  //Get 5 popular destination suggestions from selected departure or if no departure, 5 most popular cities
   function getDestinationSuggestions() {
     async function fetchData() {
       try {
@@ -68,7 +71,7 @@ function InputContainer() {
         setSuggestions(data)
       } finally {
         setShowDestSuggestions(true)
-        setShowDepSuggestions(!setShowDepSuggestions)
+        setShowDepSuggestions(!setShowDestSuggestions)
       }
     }
     fetchData()
@@ -86,7 +89,7 @@ function InputContainer() {
           showSuggestions={showDepSuggestions}
           setShowSuggestions={setShowDepSuggestions}
           setSuggestions={setSuggestions}
-          onClick={getPopularSugestions}
+          onClick={getPopularSuggestions}
         />
         {showDepSuggestions && (
           <div>

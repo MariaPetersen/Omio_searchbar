@@ -2,7 +2,7 @@ import { MouseEventHandler } from "react"
 import "./styles.scss"
 import { AiOutlineCheck } from "react-icons/ai"
 
-function ParamsOption(props: {
+function ReturnOption(props: {
   name: string
   onClick: MouseEventHandler<HTMLDivElement>
   selected: string
@@ -26,4 +26,4 @@ function ParamsOption(props: {
   )
 }
 
-export default ParamsOption
+export default ReturnOption

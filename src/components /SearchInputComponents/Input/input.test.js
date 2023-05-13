@@ -1,7 +1,7 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import Input from './Input';
 
-describe('Input component', () => {
+describe('Input', () => {
   it('renders input with correct placeholder and value', () => {
     const placeholder = 'Enter a city';
     const valueCity = 'London';

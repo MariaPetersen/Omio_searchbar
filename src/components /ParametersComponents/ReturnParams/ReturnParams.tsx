@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction } from "react"
-import ParamsOption from "components /ParametersComponents/ParamsOption/ParamsOption"
+import ReturnOption from "components /ParametersComponents/ReturnOption/ReturnOption"
 import { MouseEvent } from "react"
 import "./styles.scss"
 
@@ -20,12 +20,12 @@ function ReturnParams(props: {
   return (
     <div>
       <div className="returnParams">
-        <ParamsOption
+        <ReturnOption
           name="One-way"
           onClick={handleClick}
           selected={props.selected}
         />
-        <ParamsOption
+        <ReturnOption
           name="Round trip"
           onClick={handleClick}
           selected={props.selected}
