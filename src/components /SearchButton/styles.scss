@@ -15,4 +15,15 @@
     align-items: center;
     color: white;
     margin: $input-margin;
+    font-size: 16px;
+    @media screen and (min-width: $tablet) {
+        box-sizing: border-box;
+        margin-left: 8px;
+        width: 112px;
+    }
+    @media screen and (min-width: $desktop) {
+        box-sizing: border-box;
+        margin-left: 8px;
+        width: 163px;
+    }
 }

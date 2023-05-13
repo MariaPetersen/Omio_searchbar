@@ -7,8 +7,6 @@ import { IData } from "components /InputContainer/InputContainer"
 
 function Input(props: {
   placeholder: string
-  icon: string
-  departureToggle: string
   inputType: string
   valueCity: string
   setCity: Dispatch<SetStateAction<string>>

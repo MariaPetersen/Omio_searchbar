@@ -1,8 +1,7 @@
 import Input from "../Input/Input"
 import { useState } from "react"
-import departureToggle from "./../../assets/icons/up-and-down-arrow.png"
-import localisationIcon from "./../../assets/icons/localisation-dot.png"
 import Suggestions from "./../Suggestions/Suggestions"
+import "./styles.scss"
 
 export interface IData {
   id: number
@@ -39,6 +38,7 @@ function InputContainer() {
         console.log(data)
         setSuggestions(data)
         setShowDepSuggestions(true)
+        setShowDestSuggestions(!setShowDestSuggestions)
       } catch {
         return
       }
@@ -68,13 +68,14 @@ function InputContainer() {
         setSuggestions(data)
       } finally {
         setShowDestSuggestions(true)
+        setShowDepSuggestions(!setShowDepSuggestions)
       }
     }
     fetchData()
   }
 
   return (
-    <div>
+    <div className="inputContainer">
       <div>
         <Input
           onSwap={handleSwap}
@@ -82,8 +83,6 @@ function InputContainer() {
           valueCity={valueDeparture}
           setCity={setDeparture}
           placeholder="From: City, Station Or Airport"
-          departureToggle={departureToggle}
-          icon={localisationIcon}
           showSuggestions={showDepSuggestions}
           setShowSuggestions={setShowDepSuggestions}
           setSuggestions={setSuggestions}
@@ -104,15 +103,13 @@ function InputContainer() {
           </div>
         )}
       </div>
-      <div>
+      <div className="inputContainer--destination">
         <Input
           onSwap={handleSwap}
           inputType="destination"
           valueCity={valueDestination}
           setCity={setDestination}
           placeholder="To: City, Station Or Airport"
-          departureToggle={departureToggle}
-          icon={localisationIcon}
           showSuggestions={showDestSuggestions}
           setShowSuggestions={setShowDestSuggestions}
           setSuggestions={setSuggestions}

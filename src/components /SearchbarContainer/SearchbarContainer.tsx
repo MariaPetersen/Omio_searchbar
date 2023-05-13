@@ -92,7 +92,7 @@ function SearchbarContainer() {
           setSelected={setSelected}
         />
       </div>
-      <div>
+      <div className="searchInput--container">
         <InputContainer />
 
         <DateContainer
@@ -101,8 +101,8 @@ function SearchbarContainer() {
           selected={selected}
           setSelected={setSelected}
         />
+        <SearchButton name="Search" />
       </div>
-      <SearchButton name="Search" />
     </div>
   )
 }

@@ -7,20 +7,21 @@ function ParamsOption(props: {
   onClick: MouseEventHandler<HTMLDivElement>
   selected: string
 }) {
-  console.log(props.selected)
   return props.selected === props.name ? (
     <div id={props.name} onClick={props.onClick} className="option selected">
       <div className="check check--selected">
         <AiOutlineCheck />
       </div>
-      <span className="selected">{props.name}</span>
+      <span className="selected" data-testid="name">
+        {props.name}
+      </span>
     </div>
   ) : (
     <div id={props.name} onClick={props.onClick} className="option">
       <div className="check">
         <AiOutlineCheck />
       </div>
-      <span>{props.name}</span>
+      <span data-testid="name">{props.name}</span>
     </div>
   )
 }

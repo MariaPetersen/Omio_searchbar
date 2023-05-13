@@ -1,7 +1,6 @@
 import { Dispatch, SetStateAction } from "react"
 import ParamsOption from "../ParamsOption/ParamsOption"
 import { MouseEvent } from "react"
-import { useState } from "react"
 import "./styles.scss"
 
 function ReturnParams(props: {

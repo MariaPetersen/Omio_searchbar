@@ -1,13 +1,24 @@
+@import "./../../utils/styles/styles.scss";
+
 .params--all{
     display: flex;
     flex-direction: row;
     -webkit-text-size-adjust: 100%;
 }
 
-
 .searchbar{
     background-color: #fff;
     border-radius: 8px;
     padding: 16px;
     max-width: 1136px;
+    @media screen and (min-width: $tablet) {
+        padding: 8px;
+    }
+}
+
+.searchInput--container{
+    @media screen and (min-width: $tablet) {
+        display: flex;
+        flex-direction: row;
+    }
 }

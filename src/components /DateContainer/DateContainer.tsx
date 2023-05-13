@@ -8,11 +8,12 @@ import {
 import { useState, useEffect } from "react"
 import "./styles.scss"
 import addDays from "date-fns/addDays"
+import subDays from "date-fns/subDays"
 import Datepicker from "react-datepicker"
 import "react-datepicker/dist/react-datepicker.css"
 import DestinationInput from "../DestinationInput/DestinationInput"
 import DepartureInput from "./../DepartureInput/DepartureInput"
-import { Value } from "sass"
+import useMediaQuery from "./../../utils/hooks/useMediaQuery"
 
 function DateContainer(props: {
   isRoundtrip: boolean
@@ -23,6 +24,8 @@ function DateContainer(props: {
   const [dateDeparture, setDateDeparture] = useState(new Date())
   const [dateDestination, setDateDestination] = useState(addDays(new Date(), 7))
 
+  const isTablet = useMediaQuery("(min-width: 768px)")
+
   function addRoundtrip() {
     props.setIsRoundtrip(true)
     props.setSelected("Round trip")
@@ -30,16 +33,30 @@ function DateContainer(props: {
 
   return (
     <div className="date--all">
-      <Datepicker
-        onChange={(date: Date) => setDateDeparture(date)}
-        selected={dateDeparture}
-        dateFormat="EE, MMMM d"
-        startDate={dateDeparture}
-        endDate={dateDestination}
-        customInput={createElement(forwardRef(DepartureInput))}
-      />
+      {isTablet ? (
+        <Datepicker
+          onChange={(date: Date) => setDateDeparture(date)}
+          selected={dateDeparture}
+          dateFormat="EE, MMMM d"
+          startDate={dateDeparture}
+          endDate={dateDestination}
+          customInput={createElement(forwardRef(DepartureInput))}
+          monthsShown={2}
+          minDate={subDays(new Date(), 0)}
+        />
+      ) : (
+        <Datepicker
+          onChange={(date: Date) => setDateDeparture(date)}
+          selected={dateDeparture}
+          dateFormat="EE, MMMM d"
+          startDate={dateDeparture}
+          endDate={dateDestination}
+          customInput={createElement(forwardRef(DepartureInput))}
+          minDate={subDays(new Date(), 0)}
+        />
+      )}
 
-      {props.isRoundtrip ? (
+      {props.isRoundtrip && isTablet && (
         <Datepicker
           onChange={(date: Date) => setDateDestination(date)}
           selected={dateDestination}
@@ -47,8 +64,22 @@ function DateContainer(props: {
           endDate={dateDestination}
           dateFormat="EE, MMMM d"
           customInput={createElement(forwardRef(DestinationInput))}
+          minDate={subDays(new Date(), 0)}
+          monthsShown={2}
         />
-      ) : (
+      )}
+      {props.isRoundtrip && !isTablet && (
+        <Datepicker
+          onChange={(date: Date) => setDateDestination(date)}
+          selected={dateDestination}
+          startDate={dateDeparture}
+          endDate={dateDestination}
+          dateFormat="EE, MMMM d"
+          customInput={createElement(forwardRef(DestinationInput))}
+          minDate={subDays(new Date(), 0)}
+        />
+      )}
+      {!props.isRoundtrip && !isTablet && (
         <div className="datepicker--container" onClick={addRoundtrip}>
           <Datepicker
             onChange={(date: Date) => setDateDestination(date)}
@@ -58,6 +89,7 @@ function DateContainer(props: {
             disabled
             placeholderText="+ Add return"
             customInput={createElement(forwardRef(DestinationInput))}
+            minDate={subDays(new Date(), 0)}
           />
         </div>
       )}

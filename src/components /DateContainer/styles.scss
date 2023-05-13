@@ -1,8 +1,18 @@
+@import "./../../utils/styles/styles.scss";
+
 .date--all{
+    box-sizing: border-box;
     display: flex;
     width: 100%;
     justify-content: center;
     position: relative;
+    height: 54px;
+    @media screen and (min-width: $tablet) {
+        margin-right: 8px;
+        margin-left: 8px;
+        width: auto;
+        flex-shrink: 2;
+    }
     &::before{
         position: absolute;
         display: block;
@@ -19,4 +29,139 @@
 
 .datepicker--container{
     width: 100%;
+    color: $icon-invalid-color;
+}
+
+.react-datepicker{
+    display: flex !important;
+    height:  auto;
+    width: 340px;
+    padding: 32px;
+    border: 0px !important;
+    box-shadow: rgba(19, 41, 104, 0.2) 0px 16px 16px 0px;;
+    @media screen and (min-width: $tablet) {
+        width: 680px;
+    }
+    &__triangle{
+        display: none;
+    }
+    &__navigation{
+        margin-top: 40px;
+        &--previous{
+            margin-left: 40px;
+        }
+        &--next{
+            margin-right: 40px;
+        }
+    }
+    &__header{
+        background-color: white !important;
+        padding-top: 18px !important;
+    }
+    &__current-month{
+        color: $text-color !important;
+        margin-top: -5px !important;
+    }
+    &__day-names{
+        margin-top: 10px;
+        margin-bottom: 0px !important;
+        display: flex;
+        justify-content: space-around;
+        color: $second-text-color !important;
+    }
+    &__month{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        margin: 0px !important;
+        margin-top: 5px !important;
+    }
+    &__week{
+        width: 340px;
+        height: 48px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        & div[aria-selected="true"]{
+        background-color: rgb(135, 169, 209);
+    }
+    }
+    &__day{
+        height: 40px;
+        width: 40px !important;
+        color: $text-color !important;
+        box-sizing: border-box !important;
+        align-self: center;
+        display: flex;
+        justify-self: center;
+        font-size: 14px;
+        padding-top: 5px;
+        &:hover{
+            background-color: none !important;
+            cursor: pointer;
+            border: solid 1px $text-color;
+            box-sizing: border-box;
+            border-radius: 90px !important;
+        }
+        &--disabled{
+            color: $second-text-color !important;
+            &:hover{
+                border: none;
+                cursor:default;
+            }
+        }
+        &--weekend{
+            font-weight: bold;
+        }
+        &-name{
+            color: $second-text-color !important;
+            text-transform: uppercase;
+        }
+        &--range-start{
+                color: white !important;
+                background-color: $text-color !important;
+                &::before{
+                    border-top-left-radius: 90px !important;
+                    border-bottom-left-radius: 90px;
+                    z-index: -2;
+                }
+            }
+        &--in-range{ 
+           background-color: rgb(197, 222, 251) !important;
+            border-radius: 90px !important;
+            position: relative;
+        }
+        &--outside-month{
+            visibility: hidden;
+        }
+    }
+}
+
+.react-datepicker__day--range-start.react-datepicker__day--in-range{
+    color: white !important;
+                background-color: $text-color !important;
+                border-radius: 90px;
+                &::before{
+                    background-color: $text-color !important;
+                    width: 100%;
+                    border-radius: 90px;
+                    z-index: -2;
+                    padding-left: 0px;
+                    padding-right: 0px;
+                }
+}
+
+.react-datepicker__day--range-end.react-datepicker__day--in-range{
+    color: white !important;
+                background-color: $text-color !important;
+                border-radius: 90px;
+                z-index: 2 !important;
+                &::before{
+                    background-color: $text-color !important;
+                    width: 100%;
+                    border-radius: 90px;
+                    z-index: -2;
+                    padding-left: 0px;
+                    padding-right: 0px;
+                }
 }

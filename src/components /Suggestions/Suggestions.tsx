@@ -14,14 +14,14 @@ function Suggestions(props: {
       <ul className="suggestions">
         {props.suggestions.map((city, index) => (
           <li
-            key={city.id}
+            key={`${city.id}-${index}`}
             onClick={() => {
               props.setCity(city.local_name)
               props.setShowSuggestions(false)
             }}
             className="suggestions--option"
           >
-            <FaMapMarkerAlt className="suggestions--icon" />
+            <FaMapMarkerAlt className="suggestions--icon" key="mapMarker" />
             {city.local_name}
           </li>
         ))}
