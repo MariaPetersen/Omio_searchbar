@@ -1,0 +1,38 @@
+@import "utils/styles/styles.scss";
+
+.passengersParams--container {
+    display: flex;
+    width: 288px;
+    max-height: 560px;
+    flex-direction: column;
+    box-shadow: rgba(19, 41, 104, 0.2) 0px 8px 16px 0px;
+    border-radius: $border-radius;
+    background-color: rgb(255, 255, 255);
+    min-width: 140px;
+    padding: 16px;
+    margin-top: 5px;
+    position: absolute;
+    top: 66px;
+    z-index: 10;
+    transition: all 0.2s cubic-bezier(0.6, 0, 0.7, 1) 0s;
+}
+
+.discount{
+    @include center-div;
+
+    margin: 0px 0px 24px;
+    padding: 14px 10px 0px;
+    color: $third-text-color;
+    &--text{
+        @include center-div;
+    }
+    &--cardIcon{
+        margin-top: 5px;
+        margin-right: 5px;
+    }
+    &--infoIcon{
+        margin-left: 5px;
+        scale: 1.2;
+        align-self: center;
+    }
+}

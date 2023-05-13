@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react"
-import DateContainer from "../DateContainer/DateContainer"
-import InputContainer from "../InputContainer/InputContainer"
-import SearchButton from "../SearchButton/SearchButton"
-import ParamsContainer from "../../components /ParamsContainer/ParamsContainer"
+import DateContainer from "components /DateComponents/DateContainer/DateContainer"
+import InputContainer from "components /SearchInputComponents/InputContainer/InputContainer"
+import SearchButton from "components /GeneralComponents/SearchButton/SearchButton"
+import ParamsContainer from "components /ParametersComponents/ParamsContainer/ParamsContainer"
 import "./styles.scss"
 
 function SearchbarContainer() {

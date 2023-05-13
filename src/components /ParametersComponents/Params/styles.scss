@@ -1,0 +1,27 @@
+@import "utils/styles/styles.scss";
+
+.params{
+    width: auto;
+    display: flex;
+    font-size: 14px;
+    color: $text-color;
+    border-radius: $border-radius;
+    &--icon{
+        width: 10px;
+        margin-left: 6px;
+    };
+    cursor: pointer;
+    &--button{
+        background: none;
+        color: inherit;
+        border: none;
+        padding: 0;
+        font: inherit;
+        cursor: pointer;
+        outline: inherit;
+    }
+}
+
+.rotated{
+    transform: rotate(180deg);
+}
