@@ -1,5 +1,5 @@
 import { render, screen, fireEvent } from '@testing-library/react'
-import Input from './Input'
+import Input from '../Input'
 
 const placeholder = 'Enter a city'
 const valueCity = 'London'

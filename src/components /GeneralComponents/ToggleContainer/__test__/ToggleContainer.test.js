@@ -1,6 +1,5 @@
 import { render, screen, fireEvent } from '@testing-library/react'
 import ToggleContainer from '../ToggleContainer';
-import { click } from '@testing-library/user-event/dist/click';
 
 describe('Toggle', () => {
     it('shows the toggle unchecked at render', () => {

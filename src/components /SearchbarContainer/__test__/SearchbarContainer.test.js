@@ -1,12 +1,14 @@
 import matchMedia from "__mock__/matchMedia.mock.js"
-import { fireEvent, getAllByTestId, render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import SearchbarContainer from '../SearchbarContainer';
+
+
 
 describe('SearchbarContainer Inputs', () => {
     it('should show suggestions when click in the input', async () => {
         render(<SearchbarContainer />)
 
-        const inputElement = screen.getByPlaceholderText(/From/)
+        const inputElement = screen.getByPlaceholderText("From: City, Station Or Airport")
         fireEvent.click(inputElement)
         const suggestions = await screen.findByRole("list")
         await expect(suggestions).toBeInTheDocument()
@@ -118,9 +120,13 @@ describe('Searchbar Params', () => {
 })
 
 describe('SearchbarContainer Accommodation Toggle', () => {
-    render(<SearchbarContainer />)
+    it('should check toggle when clicked', () => {
+        render(<SearchbarContainer />)
 
-    const toggle = screen.getByTestId("toggle")
-    fireEvent.click(toggle)
-    expect(toggle.value).toBe("on")
+        const toggle = screen.getByTestId("toggle")
+        fireEvent.click(toggle)
+        expect(toggle.value).toBe("on")
+
+    })
+
 })

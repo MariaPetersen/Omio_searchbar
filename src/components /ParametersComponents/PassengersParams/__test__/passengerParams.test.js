@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import PassengersParams from './PassengersParams';
+import PassengersParams from '../PassengersParams';
 
 describe('PassengersParamsContainer component', () => {
     it('renders passangerParams with listed props', () => {

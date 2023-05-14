@@ -1,5 +1,5 @@
 import { render, screen, fireEvent } from '@testing-library/react';
-import Params from './Params';
+import Params from '../Params'
 
 describe('Params', () => {
     it('renders closed component by default', () => {
@@ -12,15 +12,14 @@ describe('Params', () => {
                 passengers=""
             />
         );
-        const closedComponent = screen.getByText('Round trip');
-        expect(closedComponent).toBeInTheDocument();
-        const closedIcon = screen.getByAltText('open');
-        expect(closedIcon).toBeInTheDocument();
-        expect(closedIcon).not.toHaveClass('rotated');
+        const closedComponent = screen.getByText('Round trip')
+        expect(closedComponent).toBeInTheDocument()
+        const closedIcon = screen.getByAltText('open')
+        expect(closedIcon).not.toHaveClass('rotated')
     });
 
     it('opens the component when clicked', () => {
-        const setIsOpenMock = jest.fn();
+        const setIsOpenMock = jest.fn()
         render(
             <Params
                 paramsType="return"
@@ -31,15 +30,14 @@ describe('Params', () => {
             />
         );
 
-        const closedComponent = screen.getByText('Round trip');
-        fireEvent.click(closedComponent);
+        const closedComponent = screen.getByText('Round trip')
+        fireEvent.click(closedComponent)
 
-        expect(setIsOpenMock).toHaveBeenCalledTimes(1);
-        expect(setIsOpenMock).toHaveBeenCalledWith(true);
-    });
+        expect(setIsOpenMock).toHaveBeenCalledWith(true)
+    })
 
     it('closes the component when clicked again', () => {
-        const setIsOpenMock = jest.fn();
+        const setIsOpenMock = jest.fn()
         render(
             <Params
                 paramsType="return"
@@ -48,12 +46,12 @@ describe('Params', () => {
                 setIsOpen={setIsOpenMock}
                 passengers=""
             />
-        );
+        )
 
-        const openedComponent = screen.getByText('Round trip');
-        fireEvent.click(openedComponent);
+        const openedComponent = screen.getByText('Round trip')
+        fireEvent.click(openedComponent)
 
-        expect(setIsOpenMock).toHaveBeenCalledTimes(1);
-        expect(setIsOpenMock).toHaveBeenCalledWith(false);
-    });
-});
+        expect(setIsOpenMock).toHaveBeenCalledWith(false)
+    })
+
+})

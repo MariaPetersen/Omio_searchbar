@@ -4,6 +4,7 @@ import { Dispatch, SetStateAction } from "react"
 import ReturnParams from "components /ParametersComponents/ReturnParams/ReturnParams"
 import PassengersParamsContainer from "components /ParametersComponents/PassengersParamsContainer/PassengersParamsContainer"
 import "./styles.scss"
+import { PassengerAge } from "utils/types/types"
 
 function ParamsContainer(props: {
   paramsType: "return" | "passengers"

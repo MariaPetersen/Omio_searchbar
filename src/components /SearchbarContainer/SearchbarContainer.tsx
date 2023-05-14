@@ -6,6 +6,7 @@ import ParamsContainer from "components /ParametersComponents/ParamsContainer/Pa
 import "./styles.scss"
 import AccomodationToggle from "components /GeneralComponents/AcommodationToggle/AccommodationToggle"
 import addDays from "date-fns/addDays"
+import { PassengerAge } from "utils/types/types"
 
 function SearchbarContainer() {
   //States for round trip settings
