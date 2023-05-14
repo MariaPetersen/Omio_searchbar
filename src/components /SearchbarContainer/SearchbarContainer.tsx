@@ -4,6 +4,8 @@ import InputContainer from "components /SearchInputComponents/InputContainer/Inp
 import SearchButton from "components /GeneralComponents/SearchButton/SearchButton"
 import ParamsContainer from "components /ParametersComponents/ParamsContainer/ParamsContainer"
 import "./styles.scss"
+import AccomodationToggle from "components /GeneralComponents/AcommodationToggle/AccomodationToggle"
+import addDays from "date-fns/addDays"
 
 function SearchbarContainer() {
   //States for round trip settings
@@ -16,6 +18,17 @@ function SearchbarContainer() {
   const [senior, setSenior] = useState(0)
   const [hasDiscountcard, setHasDiscountcart] = useState(false)
   const [title, setTitle] = useState("")
+
+  //States for setting input value
+  const [valueDeparture, setDeparture] = useState("")
+  const [valueDestination, setDestination] = useState("")
+
+  //States for travel dates
+  const [dateDeparture, setDateDeparture] = useState(new Date())
+  const [dateDestination, setDateDestination] = useState(addDays(new Date(), 7))
+
+  //States for accomodation
+  const [includeAccomodation, setIncludeAccomodation] = useState("false")
 
   useEffect(() => {
     if (senior === 0 && youth === 0) {
@@ -76,52 +89,64 @@ function SearchbarContainer() {
   }
 
   return (
-    <div className="searchbar">
-      <div className="params--all">
-        <ParamsContainer
-          paramsType="return"
-          isRoundtrip={isRoundtrip}
-          setIsRoundtrip={setIsRoundtrip}
-          name={selected}
-          adults={adults}
-          setAdults={setAdults}
-          youth={youth}
-          setYouth={setYouth}
-          senior={senior}
-          setSenior={setSenior}
-          hasDiscountcard={hasDiscountcard}
-          setHasDiscountcart={setHasDiscountcart}
-          selected={selected}
-          setSelected={setSelected}
-        />
-        <ParamsContainer
-          paramsType="passengers"
-          isRoundtrip={isRoundtrip}
-          setIsRoundtrip={setIsRoundtrip}
-          name={title}
-          adults={adults}
-          setAdults={setAdults}
-          youth={youth}
-          setYouth={setYouth}
-          senior={senior}
-          setSenior={setSenior}
-          hasDiscountcard={hasDiscountcard}
-          setHasDiscountcart={setHasDiscountcart}
-          selected={selected}
-          setSelected={setSelected}
-        />
-      </div>
-      <div className="searchInput--container">
-        <InputContainer />
+    <div className="container">
+      <div className="searchbar">
+        <div className="params--all">
+          <ParamsContainer
+            paramsType="return"
+            isRoundtrip={isRoundtrip}
+            setIsRoundtrip={setIsRoundtrip}
+            name={selected}
+            adults={adults}
+            setAdults={setAdults}
+            youth={youth}
+            setYouth={setYouth}
+            senior={senior}
+            setSenior={setSenior}
+            hasDiscountcard={hasDiscountcard}
+            setHasDiscountcart={setHasDiscountcart}
+            selected={selected}
+            setSelected={setSelected}
+          />
+          <ParamsContainer
+            paramsType="passengers"
+            isRoundtrip={isRoundtrip}
+            setIsRoundtrip={setIsRoundtrip}
+            name={title}
+            adults={adults}
+            setAdults={setAdults}
+            youth={youth}
+            setYouth={setYouth}
+            senior={senior}
+            setSenior={setSenior}
+            hasDiscountcard={hasDiscountcard}
+            setHasDiscountcart={setHasDiscountcart}
+            selected={selected}
+            setSelected={setSelected}
+          />
+        </div>
+        <div className="searchInput--container">
+          <InputContainer
+            setDeparture={setDeparture}
+            valueDeparture={valueDeparture}
+            setDestination={setDestination}
+            valueDestination={valueDestination}
+          />
 
-        <DateContainer
-          isRoundtrip={isRoundtrip}
-          setIsRoundtrip={setIsRoundtrip}
-          selected={selected}
-          setSelected={setSelected}
-        />
-        <SearchButton name="Search" />
+          <DateContainer
+            setDateDeparture={setDateDeparture}
+            dateDeparture={dateDeparture}
+            setDateDestination={setDateDestination}
+            dateDestination={dateDestination}
+            isRoundtrip={isRoundtrip}
+            setIsRoundtrip={setIsRoundtrip}
+            selected={selected}
+            setSelected={setSelected}
+          />
+          <SearchButton name="Search" />
+        </div>
       </div>
+      <AccomodationToggle />
     </div>
   )
 }

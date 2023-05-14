@@ -22,3 +22,31 @@
         flex-direction: row;
     }
 }
+
+
+.container{
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 0 auto;
+    padding: 16px;
+    box-sizing: border-box;
+    min-width: 280px;
+    border-radius: $border-radius;
+    background-color: #fff;
+    box-shadow: 0, 4px, 8px, rgba(19,41,104,.1);;
+    justify-content: space-between;
+    &--accomodation{
+        display: flex;
+        padding-left: 16px;
+    }
+    @media screen and (min-width: $tablet) {
+        height: 175px;
+        max-width: 704px;
+    }
+    @media screen and (min-width: $desktop) {
+        max-width: 1136px;
+    }
+    
+}

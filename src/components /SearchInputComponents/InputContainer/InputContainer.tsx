@@ -1,5 +1,5 @@
 import Input from "components /SearchInputComponents/Input/Input"
-import { useState } from "react"
+import { Dispatch, SetStateAction, useState } from "react"
 import Suggestions from "components /SearchInputComponents/Suggestions/Suggestions"
 import "./styles.scss"
 
@@ -17,18 +17,22 @@ export interface IData {
   iscity: boolean
 }
 
-function InputContainer() {
-  const [valueDeparture, setDeparture] = useState("")
-  const [valueDestination, setDestination] = useState("")
+function InputContainer(props: {
+  valueDeparture: string
+  setDeparture: Dispatch<SetStateAction<string>>
+  valueDestination: string
+  setDestination: Dispatch<SetStateAction<string>>
+}) {
+  //States for setting suggestions from API data
   const [suggestions, setSuggestions] = useState<IData[]>([])
   const [showDepSuggestions, setShowDepSuggestions] = useState(false)
   const [showDestSuggestions, setShowDestSuggestions] = useState(false)
 
   //Swap departure and destination
   function handleSwap() {
-    let temp = valueDestination
-    setDestination(valueDeparture)
-    setDeparture(temp)
+    let temp = props.valueDestination
+    props.setDestination(props.valueDeparture)
+    props.setDeparture(temp)
   }
 
   //Get 5 suggestion for 5 most popular cities
@@ -51,9 +55,9 @@ function InputContainer() {
   function getDestinationSuggestions() {
     async function fetchData() {
       try {
-        if (valueDeparture) {
+        if (props.valueDeparture) {
           const response = await fetch(
-            `https://api.comparatrip.eu/cities/popular/from/${valueDeparture}/5`
+            `https://api.comparatrip.eu/cities/popular/from/${props.valueDeparture}/5`
           )
           const data = await response.json()
           console.log(data)
@@ -83,8 +87,8 @@ function InputContainer() {
         <Input
           onSwap={handleSwap}
           inputType="departure"
-          valueCity={valueDeparture}
-          setCity={setDeparture}
+          valueCity={props.valueDeparture}
+          setCity={props.setDeparture}
           placeholder="From: City, Station Or Airport"
           showSuggestions={showDepSuggestions}
           setShowSuggestions={setShowDepSuggestions}
@@ -94,7 +98,7 @@ function InputContainer() {
         {showDepSuggestions && (
           <div>
             <Suggestions
-              setCity={setDeparture}
+              setCity={props.setDeparture}
               suggestions={suggestions}
               showSuggestions={showDepSuggestions}
               setShowSuggestions={setShowDepSuggestions}
@@ -110,8 +114,8 @@ function InputContainer() {
         <Input
           onSwap={handleSwap}
           inputType="destination"
-          valueCity={valueDestination}
-          setCity={setDestination}
+          valueCity={props.valueDestination}
+          setCity={props.setDestination}
           placeholder="To: City, Station Or Airport"
           showSuggestions={showDestSuggestions}
           setShowSuggestions={setShowDestSuggestions}
@@ -121,7 +125,7 @@ function InputContainer() {
         {showDestSuggestions && (
           <div>
             <Suggestions
-              setCity={setDestination}
+              setCity={props.setDestination}
               suggestions={suggestions}
               showSuggestions={showDestSuggestions}
               setShowSuggestions={setShowDestSuggestions}

@@ -5,9 +5,8 @@ import AccomodationToggle from "components /GeneralComponents/AcommodationToggle
 
 function Home() {
   return (
-    <div className="container">
+    <div>
       <SearchbarContainer />
-      <AccomodationToggle />
     </div>
   )
 }
