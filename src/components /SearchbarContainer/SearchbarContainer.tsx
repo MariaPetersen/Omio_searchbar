@@ -28,7 +28,7 @@ function SearchbarContainer() {
   const [dateDestination, setDateDestination] = useState(addDays(new Date(), 7))
 
   //States for accomodation
-  const [includeAccomodation, setIncludeAccomodation] = useState("false")
+  const [includeAccomodation, setIncludeAccomodation] = useState(false)
 
   useEffect(() => {
     if (senior === 0 && youth === 0) {
@@ -44,7 +44,7 @@ function SearchbarContainer() {
         getPassengersTitleNoDiscount()
       }
     }
-  }, [adults, youth, senior])
+  }, [adults, youth, senior, hasDiscountcard])
 
   function getAdultsTitleDiscount() {
     if (adults > 1) {
@@ -146,7 +146,10 @@ function SearchbarContainer() {
           <SearchButton name="Search" />
         </div>
       </div>
-      <AccomodationToggle />
+      <AccomodationToggle
+        setIncludeAccomodation={setIncludeAccomodation}
+        includeAccomodation={includeAccomodation}
+      />
     </div>
   )
 }

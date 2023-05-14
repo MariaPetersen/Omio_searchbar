@@ -1,10 +1,22 @@
-import Toggle from "components /GeneralComponents/ToggleContainer/ToggleContainer"
+import ToggleContainer from "components /GeneralComponents/ToggleContainer/ToggleContainer"
 import "./styles.scss"
+import { Dispatch, ChangeEvent, SetStateAction } from "react"
 
-function AccomodationToggle() {
+function AccomodationToggle(props: {
+  includeAccomodation: boolean
+  setIncludeAccomodation: Dispatch<SetStateAction<boolean>>
+}) {
+  function onAccomodationClick(e: ChangeEvent<HTMLElement>) {
+    e.preventDefault()
+    props.setIncludeAccomodation(!props.includeAccomodation)
+  }
   return (
     <div className="container--accomodation">
-      <Toggle className="toggle--blue" />
+      <ToggleContainer
+        className="toggle--blue"
+        onChange={onAccomodationClick}
+        isChecked={props.includeAccomodation}
+      />
       <div className="accomodation">Enable batmobile transport mode</div>
     </div>
   )

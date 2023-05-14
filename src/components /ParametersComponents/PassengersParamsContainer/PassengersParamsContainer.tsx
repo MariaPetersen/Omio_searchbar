@@ -1,5 +1,5 @@
 import PassengersParams from "components /ParametersComponents/PassengersParams/PassengersParams"
-import { Dispatch, SetStateAction } from "react"
+import { Dispatch, SetStateAction, ChangeEvent } from "react"
 import { FaCreditCard } from "react-icons/fa"
 import { AiOutlineInfoCircle } from "react-icons/ai"
 import "./styles.scss"
@@ -15,12 +15,12 @@ function PassengersParamsContainer(props: {
   hasDiscountcard: boolean
   setHasDiscountcart: Dispatch<SetStateAction<boolean>>
 }) {
-  function onMinus() {
-    if (props.adults >= 1) {
-      const newAdults = props.adults - 1
-      props.setAdults(newAdults)
-    }
+  function handleDiscountClick(e: ChangeEvent) {
+    e.preventDefault()
+    props.setHasDiscountcart(!props.hasDiscountcard)
+    console.log(props.hasDiscountcard)
   }
+
   return (
     <div className="passengersParams--container">
       <PassengersParams
@@ -74,7 +74,11 @@ function PassengersParamsContainer(props: {
           <span>Add discount card</span>
           <AiOutlineInfoCircle className="discount--infoIcon" />
         </div>
-        <ToggleContainer className="toggle--green" />
+        <ToggleContainer
+          className="toggle--green"
+          onChange={handleDiscountClick}
+          isChecked={props.hasDiscountcard}
+        />
       </div>
     </div>
   )
