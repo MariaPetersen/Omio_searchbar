@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/Omio_searchbar/static/css/main.dc243a04.css",
-    "main.js": "/Omio_searchbar/static/js/main.59c64858.js",
+    "main.css": "/Omio_searchbar/static/css/main.f6342c31.css",
+    "main.js": "/Omio_searchbar/static/js/main.0c6ac9f5.js",
     "static/js/787.e3625ed5.chunk.js": "/Omio_searchbar/static/js/787.e3625ed5.chunk.js",
     "index.html": "/Omio_searchbar/index.html",
-    "main.dc243a04.css.map": "/Omio_searchbar/static/css/main.dc243a04.css.map",
-    "main.59c64858.js.map": "/Omio_searchbar/static/js/main.59c64858.js.map",
+    "main.f6342c31.css.map": "/Omio_searchbar/static/css/main.f6342c31.css.map",
+    "main.0c6ac9f5.js.map": "/Omio_searchbar/static/js/main.0c6ac9f5.js.map",
     "787.e3625ed5.chunk.js.map": "/Omio_searchbar/static/js/787.e3625ed5.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.dc243a04.css",
-    "static/js/main.59c64858.js"
+    "static/css/main.f6342c31.css",
+    "static/js/main.0c6ac9f5.js"
   ]
 }
