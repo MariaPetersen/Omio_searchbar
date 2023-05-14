@@ -29,10 +29,18 @@
 
 .datepicker--container{
     width: 100%;
+    height: 100%;
     color: $icon-invalid-color;
+    z-index: 10 !important;
 }
 
+.react-datepicker-wrapper{
+    z-index: 0;
+}
 .react-datepicker{
+    &__input-container{
+        z-index: -1;
+    }
     display: flex !important;
     height:  auto;
     width: 340px;
@@ -99,7 +107,6 @@
         padding-top: 5px;
         border-radius: 90px !important;
         &:hover{
-            background-color: none !important;
             cursor: pointer;
             border: solid 1px $text-color;
             box-sizing: border-box;

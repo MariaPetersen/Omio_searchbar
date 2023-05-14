@@ -31,7 +31,11 @@ function ReturnParams(props: {
           selected={props.selected}
         />
       </div>
-      <div className="blocker" onClick={() => props.setIsOpen(false)}></div>
+      <div
+        className="blocker"
+        onClick={() => props.setIsOpen(false)}
+        data-testid="blocker"
+      ></div>
     </div>
   )
 }

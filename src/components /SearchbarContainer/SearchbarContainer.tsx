@@ -4,7 +4,7 @@ import InputContainer from "components /SearchInputComponents/InputContainer/Inp
 import SearchButton from "components /GeneralComponents/SearchButton/SearchButton"
 import ParamsContainer from "components /ParametersComponents/ParamsContainer/ParamsContainer"
 import "./styles.scss"
-import AccomodationToggle from "components /GeneralComponents/AcommodationToggle/AccomodationToggle"
+import AccomodationToggle from "components /GeneralComponents/AcommodationToggle/AccommodationToggle"
 import addDays from "date-fns/addDays"
 
 function SearchbarContainer() {
@@ -49,20 +49,20 @@ function SearchbarContainer() {
     function getAdultsTitleDiscount() {
       if (adults > 1) {
         let number = adults.toString()
-        setTitle(number + " " + "Adults" + ", " + "Discount card")
+        setTitle(number + " Adults, Discount card")
       } else {
         let number = adults.toString()
-        setTitle(number + " " + "Adult" + ", " + "Discount card")
+        setTitle(number + " Adult, Discount card")
       }
     }
 
     function getAdultsTitleNoDiscount() {
       if (adults > 1) {
         let number = adults.toString()
-        setTitle(number + " " + "Adults" + ", " + "No discount card")
+        setTitle(number + " Adults, No discount card")
       } else {
         let number = adults.toString()
-        setTitle(number + " " + "Adult" + ", " + "No discount card")
+        setTitle(number + " Adult, No discount card")
       }
     }
 
@@ -70,10 +70,10 @@ function SearchbarContainer() {
       let number = adults + youth + senior
       if (number > 1) {
         let numberString = number.toString()
-        setTitle(numberString + " " + "Passengers" + ", " + "Discount card")
+        setTitle(numberString + " Passengers, Discount card")
       } else {
         let numberString = number.toString()
-        setTitle(numberString + " " + "Passenger" + ", " + "Discount card")
+        setTitle(numberString + " Passenger, Discount card")
       }
     }
 
@@ -81,10 +81,10 @@ function SearchbarContainer() {
       let number = adults + youth + senior
       if (number > 1) {
         let numberString = number.toString()
-        setTitle(numberString + " " + "Passengers" + ", " + "No discount card")
+        setTitle(numberString + " Passengers, No discount card")
       } else {
         let numberString = number.toString()
-        setTitle(numberString + " " + "Passenger" + ", " + "No discount card")
+        setTitle(numberString + " Passenger, No discount card")
       }
     }
   }, [adults, youth, senior, hasDiscountcard])
@@ -150,6 +150,7 @@ function SearchbarContainer() {
       <AccomodationToggle
         setIncludeAccomodation={setIncludeAccomodation}
         includeAccomodation={includeAccomodation}
+        text="Enable batmobile transport mode"
       />
     </div>
   )

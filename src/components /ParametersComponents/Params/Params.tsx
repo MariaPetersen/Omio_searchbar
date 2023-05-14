@@ -14,18 +14,15 @@ function Params(props: {
   function handleClick() {
     props.isOpen ? props.setIsOpen(false) : props.setIsOpen(true)
   }
-  return props.isOpen ? (
+  return (
     <div className="params">
       <button onClick={handleClick} className="params--button">
         <span className="params--name">{props.name}</span>
-        <img src={arrow} alt="open" className="params--icon rotated" />
-      </button>
-    </div>
-  ) : (
-    <div className="params">
-      <button onClick={handleClick} className="params--button">
-        <span className="params--name">{props.name}</span>
-        <img src={arrow} alt="open" className="params--icon" />
+        {props.isOpen ? (
+          <img src={arrow} alt="open" className="params--icon rotated" />
+        ) : (
+          <img src={arrow} alt="open" className="params--icon" />
+        )}
       </button>
     </div>
   )

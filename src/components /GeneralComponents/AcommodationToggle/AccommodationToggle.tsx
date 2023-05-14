@@ -5,6 +5,7 @@ import { Dispatch, ChangeEvent, SetStateAction } from "react"
 function AccomodationToggle(props: {
   includeAccomodation: boolean
   setIncludeAccomodation: Dispatch<SetStateAction<boolean>>
+  text: string
 }) {
   function onAccomodationClick(e: ChangeEvent<HTMLElement>) {
     e.preventDefault()
@@ -17,7 +18,7 @@ function AccomodationToggle(props: {
         onChange={onAccomodationClick}
         isChecked={props.includeAccomodation}
       />
-      <div className="accomodation">Enable batmobile transport mode</div>
+      <div className="accomodation">{props.text}</div>
     </div>
   )
 }

@@ -24,6 +24,7 @@ function DateContainer(props: {
   function addRoundtrip() {
     props.setIsRoundtrip(true)
     props.setSelected("Round trip")
+    console.log("test")
   }
 
   return (
@@ -38,6 +39,7 @@ function DateContainer(props: {
           customInput={createElement(forwardRef(DepartureInput))}
           monthsShown={2}
           minDate={subDays(new Date(), 0)}
+          data-testid="datepicker-departure"
         />
       ) : (
         <Datepicker
@@ -48,6 +50,7 @@ function DateContainer(props: {
           endDate={props.dateDestination}
           customInput={createElement(forwardRef(DepartureInput))}
           minDate={subDays(new Date(), 0)}
+          data-testid="datepicker-departure"
         />
       )}
 
@@ -61,6 +64,7 @@ function DateContainer(props: {
           customInput={createElement(forwardRef(DestinationInput))}
           minDate={subDays(new Date(), 0)}
           monthsShown={2}
+          data-testid="datepicker-destination-roundtrip"
         />
       )}
       {props.isRoundtrip && !isTablet && (
@@ -72,6 +76,7 @@ function DateContainer(props: {
           dateFormat="EE, MMMM d"
           customInput={createElement(forwardRef(DestinationInput))}
           minDate={subDays(new Date(), 0)}
+          data-testid="datepicker-destination-roundtrip"
         />
       )}
       {!props.isRoundtrip && !isTablet && (
@@ -85,6 +90,22 @@ function DateContainer(props: {
             placeholderText="+ Add return"
             customInput={createElement(forwardRef(DestinationInput))}
             minDate={subDays(new Date(), 0)}
+            data-testid="datepicker-destination-oneway"
+          />
+        </div>
+      )}
+      {!props.isRoundtrip && isTablet && (
+        <div className="datepicker--container" onClick={addRoundtrip}>
+          <Datepicker
+            onChange={(date: Date) => props.setDateDestination(date)}
+            startDate={props.dateDeparture}
+            endDate={props.dateDestination}
+            dateFormat="EE, MMMM d"
+            disabled
+            placeholderText="+ Add return"
+            customInput={createElement(forwardRef(DestinationInput))}
+            minDate={subDays(new Date(), 0)}
+            data-testid="datepicker-destination-oneway"
           />
         </div>
       )}

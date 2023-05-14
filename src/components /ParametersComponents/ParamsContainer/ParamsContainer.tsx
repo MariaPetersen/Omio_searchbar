@@ -4,7 +4,6 @@ import { Dispatch, SetStateAction } from "react"
 import ReturnParams from "components /ParametersComponents/ReturnParams/ReturnParams"
 import PassengersParamsContainer from "components /ParametersComponents/PassengersParamsContainer/PassengersParamsContainer"
 import "./styles.scss"
-import { MouseEventHandler } from "react"
 
 function ParamsContainer(props: {
   paramsType: "return" | "passengers"
@@ -45,7 +44,11 @@ function ParamsContainer(props: {
             isOpen={isOpen}
             setIsOpen={setIsOpen}
           />
-          <div className="blocker" onClick={() => setIsOpen(false)}></div>
+          <div
+            className="blocker"
+            onClick={() => setIsOpen(false)}
+            data-testid="return-blocker"
+          ></div>
         </div>
       )}
       {isOpen && props.paramsType === "passengers" && (
@@ -60,7 +63,11 @@ function ParamsContainer(props: {
             hasDiscountcard={props.hasDiscountcard}
             setHasDiscountcart={props.setHasDiscountcart}
           />
-          <div className="blocker" onClick={() => setIsOpen(false)}></div>
+          <div
+            className="blocker"
+            onClick={() => setIsOpen(false)}
+            data-testid="passenger-blocker"
+          ></div>
         </div>
       )}
     </div>

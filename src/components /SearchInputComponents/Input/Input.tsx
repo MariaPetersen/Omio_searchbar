@@ -15,6 +15,7 @@ function Input(props: {
   onClick: MouseEventHandler<HTMLElement>
   setSuggestions: Dispatch<SetStateAction<IData[]>>
 }) {
+  //Get suggestions from input value while user is writting
   function setSuggestionsFromInput(e: React.ChangeEvent<HTMLInputElement>) {
     props.setCity(e.target.value)
     let url = `https://api.comparatrip.eu/cities/autocomplete/?q=${e.target.value}`
@@ -42,7 +43,11 @@ function Input(props: {
       ></input>
       {props.inputType === "departure" && (
         <div>
-          <TbArrowsSort className="input--swap" onClick={props.onSwap} />
+          <TbArrowsSort
+            className="input--swap"
+            onClick={props.onSwap}
+            data-testid="swapIcon"
+          />
         </div>
       )}
     </div>
