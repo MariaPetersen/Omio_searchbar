@@ -44,49 +44,50 @@ function SearchbarContainer() {
         getPassengersTitleNoDiscount()
       }
     }
+
+    //Callback definitions
+    function getAdultsTitleDiscount() {
+      if (adults > 1) {
+        let number = adults.toString()
+        setTitle(number + " " + "Adults" + ", " + "Discount card")
+      } else {
+        let number = adults.toString()
+        setTitle(number + " " + "Adult" + ", " + "Discount card")
+      }
+    }
+
+    function getAdultsTitleNoDiscount() {
+      if (adults > 1) {
+        let number = adults.toString()
+        setTitle(number + " " + "Adults" + ", " + "No discount card")
+      } else {
+        let number = adults.toString()
+        setTitle(number + " " + "Adult" + ", " + "No discount card")
+      }
+    }
+
+    function getPassengersTitleDiscount() {
+      let number = adults + youth + senior
+      if (number > 1) {
+        let numberString = number.toString()
+        setTitle(numberString + " " + "Passengers" + ", " + "Discount card")
+      } else {
+        let numberString = number.toString()
+        setTitle(numberString + " " + "Passenger" + ", " + "Discount card")
+      }
+    }
+
+    function getPassengersTitleNoDiscount() {
+      let number = adults + youth + senior
+      if (number > 1) {
+        let numberString = number.toString()
+        setTitle(numberString + " " + "Passengers" + ", " + "No discount card")
+      } else {
+        let numberString = number.toString()
+        setTitle(numberString + " " + "Passenger" + ", " + "No discount card")
+      }
+    }
   }, [adults, youth, senior, hasDiscountcard])
-
-  function getAdultsTitleDiscount() {
-    if (adults > 1) {
-      let number = adults.toString()
-      setTitle(number + " " + "Adults" + ", " + "Discount card")
-    } else {
-      let number = adults.toString()
-      setTitle(number + " " + "Adult" + ", " + "Discount card")
-    }
-  }
-
-  function getAdultsTitleNoDiscount() {
-    if (adults > 1) {
-      let number = adults.toString()
-      setTitle(number + " " + "Adults" + ", " + "No discount card")
-    } else {
-      let number = adults.toString()
-      setTitle(number + " " + "Adult" + ", " + "No discount card")
-    }
-  }
-
-  function getPassengersTitleDiscount() {
-    let number = adults + youth + senior
-    if (number > 1) {
-      let numberString = number.toString()
-      setTitle(numberString + " " + "Passengers" + ", " + "Discount card")
-    } else {
-      let numberString = number.toString()
-      setTitle(numberString + " " + "Passenger" + ", " + "Discount card")
-    }
-  }
-
-  function getPassengersTitleNoDiscount() {
-    let number = adults + youth + senior
-    if (number > 1) {
-      let numberString = number.toString()
-      setTitle(numberString + " " + "Passengers" + ", " + "No discount card")
-    } else {
-      let numberString = number.toString()
-      setTitle(numberString + " " + "Passenger" + ", " + "No discount card")
-    }
-  }
 
   return (
     <div className="container">
